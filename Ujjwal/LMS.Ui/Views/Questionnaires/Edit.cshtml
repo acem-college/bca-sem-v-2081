@@ -1,0 +1,72 @@
+﻿@model QuestionnaireVM
+
+@{
+	ViewData["Title"] = "Edit";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Edit</h1>
+
+<h4>QuestionnaireVM</h4>
+<hr />
+<div class="row">
+	<div class="col-md-4">
+		<form asp-action="Edit">
+			<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+			<div class="form-group">
+				<label asp-for="Content" class="control-label"></label>
+				<input asp-for="Content" class="form-control" />
+				<span asp-validation-for="Content" class="text-danger"></span>
+			</div>
+			<div class="form-group">
+				<table>
+					<tr>
+						<th>
+							Content
+						</th>
+						<th>
+							IsCorrect
+						</th>
+					</tr>
+					
+					@* @foreach (var i in Model.TotalOptions)
+					{
+						<tr>
+							<td>
+								@Html.TextBoxFor(model => TotalOptions.Content)
+								@Html.ValidationMessageFor(model => option.Content)
+							</td>
+							<td>
+								@Html.CheckBoxFor(model => option.IsCorrect)
+								@Html.ValidationMessageFor(model => option.IsCorrect)
+							</td>
+						</tr>
+						
+					} *@
+
+					@for (int i = 0; i < Model.TotalOptions.Count; i++)
+					{
+						<tr>
+							<td>
+								@Html.TextBoxFor(m => m.TotalOptions[i].Content)
+								@Html.ValidationMessageFor(m => m.TotalOptions[i].Content, "", new { @class = "text-danger" })
+							</td>
+							<td>
+								@Html.CheckBoxFor(m => m.TotalOptions[i].IsCorrect)
+								@Html.ValidationMessageFor(m => m.TotalOptions[i].IsCorrect, "", new { @class = "text-danger" })
+							</td>
+						</tr>
+					}
+				</table>
+			</div>
+			<div class="form-group">
+				<input type="submit" value="Save" class="btn btn-primary" />
+			</div>
+		</form>
+	</div>
+</div>
+
+<div>
+	<a asp-action="Index">Back to List</a>
+</div>
+
