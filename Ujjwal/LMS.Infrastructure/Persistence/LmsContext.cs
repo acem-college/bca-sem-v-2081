@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore;
+﻿using LMS.Application.Interfaces;
 using LMS.Domain.Entities;
-using LMS.Application.Interfaces;
+using Microsoft.EntityFrameworkCore;
 
 namespace LMS.Infrastructure.Persistence
 {
@@ -15,6 +10,8 @@ namespace LMS.Infrastructure.Persistence
         {
 
         }
+        public DbSet<Questionnaire> Questionnaires { get; set; }
+        
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

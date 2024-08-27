@@ -4,6 +4,7 @@ namespace LMS.Application.Common.Models.Questionnaire
 {
     public class UpdateQuestionnaireVM
     {
+        public int Id { get; set; }
         [MaxLength(1000)]
         [Required]
         public string Content { get; set; }
@@ -11,6 +12,7 @@ namespace LMS.Application.Common.Models.Questionnaire
 
         public class UpdateOptionVM
         {
+            public int Id { get; set; }
             [MaxLength(255)]
             [Required]
             public string Content { get; set; }

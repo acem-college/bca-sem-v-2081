@@ -6,14 +6,14 @@ namespace LMS.Application.Common.Models.Questionnaire
     {
         public int Id { get; set; }
         public string Content { get; set; }
-        public List<TotalOption> TotalOptions { get; set; }
-        public class TotalOption
+        public int TotalOptions { get; set; }
+        public List<OptionVM> Options { get; set; }
+
+        public class OptionVM
         {
-            [MaxLength(255)]
-            [Required]
+            public int Id { get; set; }
             public string Content { get; set; }
             public bool IsCorrect { get; set; }
         }
-
     }
 }
