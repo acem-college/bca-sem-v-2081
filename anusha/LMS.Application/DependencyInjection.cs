@@ -11,6 +11,7 @@ namespace LMS.Application
         {
             services.AddScoped<IQuestionnaireService, QuestionnaireService>();
             services.AddScoped<IUserService, UserService>();
+            services.AddScoped<ISecurityService, SecurityService>();
         }
     }
 }

@@ -1,8 +1,8 @@
-using LMS.Application.Interfaces;
-using LMS.Application.Services;
+using LMS.Application;
 using LMS.Infrastructure;
 
 var builder = WebApplication.CreateBuilder(args);
+builder.Configuration.AddJsonFile($"application.{builder.Environment}.json", optional: true, reloadOnChange: true);
 
 builder.Services.AddInfrastructure(builder.Configuration);
 builder.Services.AddApplication();

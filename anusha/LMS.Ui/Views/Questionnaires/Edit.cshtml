@@ -1,4 +1,4 @@
-﻿@model UpdateQuestionnaireVM
+﻿@model LMS.Application.Common.Models.Questionnaires.UpdateQuestionnaireVM
 
 @{
     ViewData["Title"] = "Edit";
@@ -14,15 +14,36 @@
         <form asp-action="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="Id" class="control-label"></label>
-                <input asp-for="Id" class="form-control" />
-                <span asp-validation-for="Id" class="text-danger"></span>
-            </div>
-            <div class="form-group">
                 <label asp-for="Content" class="control-label"></label>
                 <input asp-for="Content" class="form-control" />
                 <span asp-validation-for="Content" class="text-danger"></span>
             </div>
+			<div class="form-group">
+				<table>
+					<tr>
+						<th>
+							Content
+						</th>
+						<th>
+							IsCorrect
+						</th>
+					</tr>
+
+					@for (int i = 0; i < 4; i++)
+					{
+						<tr>
+							<td>
+								@Html.TextBoxFor(m => m.TotalOptions[i].Content)
+								@Html.ValidationMessageFor(m => m.TotalOptions[i].Content, "", new { @class = "text-danger" })
+							</td>
+							<td>
+								@Html.CheckBoxFor(m => m.TotalOptions[i].IsCorrect)
+								@Html.ValidationMessageFor(m => m.TotalOptions[i].IsCorrect, "", new { @class = "text-danger" })
+							</td>
+						</tr>
+					}
+				</table>
+			</div>
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />
             </div>

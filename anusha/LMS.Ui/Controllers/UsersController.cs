@@ -1,9 +1,11 @@
 ﻿using LMS.Application.Common.Models.Users;
 using LMS.Application.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace LMS.Ui.Controllers
 {
+    [Authorize]
     [Route("users")]
     public class UsersController : Controller
     {

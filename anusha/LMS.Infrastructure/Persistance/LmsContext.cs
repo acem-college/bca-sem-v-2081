@@ -1,12 +1,6 @@
 ﻿using LMS.Application.Interfaces;
 using LMS.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Options;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace LMS.Infrastructure.Persistance
 {
@@ -18,6 +12,9 @@ namespace LMS.Infrastructure.Persistance
 
         }
 
+        public DbSet<Option> Options { get; set; }
+        public DbSet<Questionnaire> Questionnaires { get; set; }
+        
         //overrriding base class controller
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

@@ -24,26 +24,31 @@
             @Html.DisplayFor(model => model.Content)
         </dd>
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.TotalOptions)
+            Number of Options
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.TotalOptions)
+            @Model.Options.Count
         </dd>
     </dl>
-    <table>
-        <tr>
-            <th>Content</th>
-            <th>Is Correct</th>
-        </tr>
-        @foreach (var item in Model.Options)
-        {
+    <table class="table">
+        <thead>
             <tr>
-                <td>@item</td>
+                <th>Content</th>
+                <th>Is Correct</th>
             </tr>
-        }
+        </thead>
+        <tbody>
+            @foreach (var option in Model.Options)
+            {
+                    <tr>
+                        <td>@option.Content</td>
+                        <td>@option.IsCorrect</td>
+                    </tr>
+            }
+        </tbody>
     </table>
 </div>
 <div>
-    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id })
     <a asp-action="Index">Back to List</a>
 </div>

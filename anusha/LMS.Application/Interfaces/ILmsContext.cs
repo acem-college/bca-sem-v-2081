@@ -1,12 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using LMS.Domain.Entities;
+using Microsoft.EntityFrameworkCore;
 
-namespace LMS.Application.Interfaces 
+namespace LMS.Application.Interfaces
 {
     public interface ILmsContext
     {
+        DbSet<Option> Options { get; set; }
+        DbSet<Questionnaire> Questionnaires { get; set; }
+
+        int SaveChanges();
     }
 }

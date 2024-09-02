@@ -7,6 +7,13 @@
 
 <h1>Questionnaires</h1>
 
+@if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-success alert-dismissible fade show">
+        @TempData["SuccessMessage"]
+    </div>
+}
+
 <p>
     <a asp-action="Create">Create New</a>
 </p>
@@ -39,11 +46,36 @@
                     @Html.DisplayFor(modelItem => item.TotalOptions)
                 </td>
                 <td>
-                    @Html.ActionLink("Edit", "Edit", new {  id=item.Id }) |
+                    @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
                     @Html.ActionLink("Details", "Details", new { id = item.Id }) |
-                    @Html.ActionLink("Delete", "Delete", new { id = item.Id})
+                    @Html.ActionLink("Delete", "Delete", new { id = item.Id }) | <a href="@Url.Action("Delete", new { id = item.Id })" class="delete-link">Delete</a>
                 </td>
             </tr>
         }
     </tbody>
 </table>
+
+@section Scripts {
+    <script>
+        // Add a confirmation dialog to delete links
+        document.querySelectorAll('.delete-link').forEach(function (deleteLink) {
+            deleteLink.addEventListener('click', function (event) {
+                event.preventDefault(); // Prevent the default link behavior
+
+                let confirmation = confirm("Are you sure you want to delete this item?");
+
+                if (confirmation) {
+                    window.location.href = this.href; // Proceed with deletion if confirmed
+                }
+            });
+        });
+
+        // Optional: Automatically hide the success message after a few seconds
+        setTimeout(function () {
+            let message = document.querySelector(".alert-success");
+            if (message) {
+                message.style.display = "none";
+            }
+        }, 3000); // Hide after 3 seconds
+    </script>
+}

@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace ClassLabs.lab2.interfaces
+﻿namespace ClassLabs.lab2.interfaces
 {
     internal interface ILab2
     {
