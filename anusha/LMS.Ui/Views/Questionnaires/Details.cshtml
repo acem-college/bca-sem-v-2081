@@ -1,0 +1,49 @@
+﻿@model QuestionnaireVM
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>QuestionnaireVM</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Id)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Id)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Content)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Content)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.TotalOptions)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.TotalOptions)
+        </dd>
+    </dl>
+    <table>
+        <tr>
+            <th>Content</th>
+            <th>Is Correct</th>
+        </tr>
+        @foreach (var item in Model.Options)
+        {
+            <tr>
+                <td>@item</td>
+            </tr>
+        }
+    </table>
+</div>
+<div>
+    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    <a asp-action="Index">Back to List</a>
+</div>
